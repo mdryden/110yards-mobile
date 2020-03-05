@@ -17,6 +17,7 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
+        
     - uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
@@ -25,9 +26,6 @@ jobs:
     - run: flutter test
     - run: flutter build apk --flavor beta
 
-    # - name: Archive production artifacts
-    #   uses: actions/upload-artifact@v1
-    #   with:
-    #     name: apk
-    #     path: build/app/outputs/apk/alpha/release/app-alpha-release.apk
-    - run: curl https://upload.testfairy.com/api/upload -F api_key=${{ secrets.TEST_FAIRY_API_KEY }} -F comment="Github Build" -F file=@build/app/outputs/apk/alpha/release/app-alpha-release.apk
+    - uses: wei/curl@v1
+      with:
+        args: https://upload.testfairy.com/api/upload -F api_key=${{ secrets.TEST_FAIRY_API_KEY }} -F comment="Github Build" -F file=@build/app/outputs/apk/alpha/release/app-alpha-release.apk
