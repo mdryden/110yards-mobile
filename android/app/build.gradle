@@ -58,6 +58,12 @@ android {
     flavorDimensions "app"
 
     productFlavors {
+        alpha {
+            dimension "app"
+            applicationIdSuffix ".alpha"
+            versionNameSuffix "-alpha"
+            resValue "string", "app_name", "110 Yards (alpha)"
+        }
         beta {
             dimension "app"
             applicationIdSuffix ".beta"
