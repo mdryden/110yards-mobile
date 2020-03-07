@@ -28,5 +28,11 @@ jobs:
       with:
         channel: 'stable' # or: 'dev' or 'beta'
     - run: flutter pub get
-    - run: flutter test
+    # - run: flutter test
     - run: flutter build apk --flavor alpha
+    
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: apk
+        path: build/outputs/apk/alpha/release/app-alpha-release.apk
