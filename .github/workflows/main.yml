@@ -35,5 +35,4 @@ jobs:
     #   with:
     #     name: apk
     #     path: build/app/outputs/apk/alpha/release/app-alpha-release.apk
-  deploy:
     - run: curl https://upload.testfairy.com/api/upload -F api_key=${{ secrets.TEST_FAIRY_API_KEY }} -F comment="Github Build" -F file=build/app/outputs/apk/alpha/release/app-alpha-release.apk
