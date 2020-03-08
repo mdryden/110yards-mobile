@@ -23,6 +23,6 @@ jobs:
 
     - run: flutter pub get
     - run: flutter test
-    - run: flutter build apk --flavor beta
+    - run: flutter build apk --flavor beta --build-number=$GITHUB_RUN_NUMBER
     
     - run: curl https://upload.testfairy.com/api/upload -F api_key=${{ secrets.TEST_FAIRY_API_KEY }} -F comment="Github Build" -F file=@build/app/outputs/apk/beta/release/app-beta-release.apk
